@@ -1,0 +1,112 @@
+<template>
+    <lightning-modal-header label="Create or Edit Queries"></lightning-modal-header>
+
+    <lightning-modal-body>
+        <div class="mainWrapper">
+            <div class="panel">
+                <h2 class="sectionTitle">Create Query</h2>
+
+                    <lightning-input
+                        label="Name"
+                        required
+                        value={createName}
+                        onchange={handleCreateNameInput}>
+                    </lightning-input>
+
+                    <lightning-textarea
+                        label="Description"
+                        required
+                        value={createDescription}
+                        onchange={handleCreateDescriptionInput}>
+                    </lightning-textarea>
+
+                    <lightning-combobox
+                        label="SObject"
+                        required
+                        options={sobjectOptions}
+                        value={createSObject}
+                        onchange={handleCreateSObjectChange}>
+                    </lightning-combobox>
+
+                    <lightning-textarea
+                        label="SOQL Query Text"
+                        required
+                        value={createSoql}
+                        onchange={handleCreateSoqlInput}>
+                    </lightning-textarea>
+
+                    <lightning-button
+                        variant="brand"
+                        label="Create Query"
+                        onclick={handleCreateQuery}>
+                    </lightning-button>
+            </div>
+
+            <div class="panel">
+                <h2 class="sectionTitle">Edit Query</h2>
+
+                <div class="editWrapper">
+                    <div class="queryListSection">
+                        <p class="subTitle">Saved Queries</p>
+
+                        <div class="queryListBox">
+                            <template for:each={queries} for:item="query">
+                                <div
+                                    key={query.id}
+                                    class={query.className}
+                                    data-id={query.id}
+                                    onclick={handleQueryClick}>
+                                    {query.name}
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+
+                    <div class="editFormSection">
+                        <lightning-input
+                            label="Name"
+                            required
+                            value={editName}
+                            onchange={handleEditNameInput}>
+                        </lightning-input>
+
+                        <lightning-textarea
+                            label="Description"
+                            required
+                            value={editDescription}
+                            onchange={handleEditDescriptionInput}>
+                        </lightning-textarea>
+
+                        <lightning-combobox
+                            label="SObject"
+                            required
+                            options={sobjectOptions}
+                            value={editSObject}
+                            onchange={handleEditSObjectChange}>
+                        </lightning-combobox>
+
+                        <lightning-textarea
+                            label="SOQL Query Text"
+                            required
+                            value={editSoql}
+                            onchange={handleEditSoqlInput}>
+                        </lightning-textarea>
+
+                        <lightning-button
+                            variant="brand"
+                            label="Save Changes"
+                            onclick={handleSaveChanges}>
+                        </lightning-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </lightning-modal-body>
+
+    <lightning-modal-footer>
+        <lightning-button
+            label="Close"
+            onclick={handleClose}>
+        </lightning-button>
+    </lightning-modal-footer>
+</template>

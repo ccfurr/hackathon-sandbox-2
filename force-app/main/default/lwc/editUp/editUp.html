@@ -1,0 +1,32 @@
+<template>
+    <div class="slds-p-around_large">
+        <div class="slds-m-bottom_large">
+            <h1 class="slds-text-heading_large slds-m-bottom_x-small">Query Vault</h1>
+            <p class="slds-text-body_regular slds-text-color_weak">
+                Browse, review, search, copy, and delete trusted SOQL queries from the centralized library.
+            </p>
+        </div>
+
+        <lightning-card>
+            <div class="cardWrapper">
+
+                <!-- LEFT SIDE OVERLAY -->
+                <template if:true={latestQueryName}>
+                    <div class="recentOverlay">
+                        <span class="recentLabel">Recent:</span>
+                        <span class="recentName">{latestQueryName}</span>
+                    </div>
+                </template>
+
+                <!-- MAIN CLICK AREA -->
+                <div class="cardClickArea" onclick={openModal}>
+                    <h2 class="cardTitle">
+                        <span class="createText">Create</span> or <span class="editText">Edit</span> Queries
+                    </h2>
+                    <p class="cardText">Click here to manage stored queries.</p>
+                </div>
+
+            </div>
+        </lightning-card>
+    </div>
+</template>

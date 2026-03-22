@@ -1,0 +1,12 @@
+.queriesWrapper {
+    padding-top: 0.25rem;
+}
+
+.resultsSection {
+    margin-top: 0.5rem;
+}
+
+.scrollBox {
+    max-height: 500px;
+    overflow-y: auto;
+}

@@ -1,0 +1,72 @@
+.mainWrapper {
+    display: flex;
+    gap: 1rem;
+}
+
+.panel {
+    flex: 1;
+    border: 1px solid #d8dde6;
+    border-radius: 0.25rem;
+    padding: 1rem;
+    background-color: #ffffff;
+}
+
+.sectionTitle {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.subTitle {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.editWrapper {
+    display: flex;
+    gap: 1rem;
+}
+
+.queryListSection {
+    width: 35%;
+    border-right: 1px solid #d8dde6;
+    padding-right: 0.75rem;
+}
+
+.editFormSection {
+    width: 65%;
+}
+
+.queryListBox {
+    max-height: 260px;
+    overflow-y: auto;
+    border: 1px solid #d8dde6;
+    border-radius: 0.25rem;
+    background-color: #fafaf9;
+}
+
+.queryItem {
+    padding: 0.6rem 0.75rem;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+lightning-input,
+lightning-textarea,
+lightning-combobox {
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+.queryItem {
+    padding: 6px 10px;
+    cursor: pointer;
+}
+
+.queryItem:hover {
+    background-color: #f3f3f3;
+}
+
+.selectedQuery {
+    background-color: #d8e6fe;
+    font-weight: 600;
+}

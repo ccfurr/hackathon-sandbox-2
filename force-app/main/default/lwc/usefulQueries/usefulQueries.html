@@ -1,6 +1,127 @@
 <template>
-    <!-- Here is where you include any markup for your lwc. -->
-    <div class="slds-var-p-around_medium slds-border_bottom">
-        <p class="slds-text-body_small slds-text-color_weak">Create, validate, and reuse trusted SOQL queries in one centralized library.</p>
+    <div class="queriesWrapper slds-p-horizontal_large slds-p-bottom_large">
+
+        <!-- Search Section -->
+        <lightning-card title="Search Queries" icon-name="utility:search">
+            <div class="slds-p-around_medium">
+                <lightning-input
+                    type="search"
+                    label="Search"
+                    placeholder="Search by query name, object, description, or SOQL"
+                    value={searchKey}
+                    onchange={handleSearchChange}>
+                </lightning-input>
+            </div>
+        </lightning-card>
+
+        <div class="slds-grid slds-wrap slds-gutters resultsSection">
+
+            <!-- Query List -->
+            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+                <lightning-card title="Saved Queries" icon-name="standard:collection">
+                    <div class="slds-p-around_medium scrollBox">
+
+                        <template if:true={hasQueries}>
+                            <div class="slds-grid slds-wrap slds-gutters">
+                                <template for:each={filteredQueries} for:item="query">
+                                    <div
+                                        key={query.id}
+                                        class="slds-col slds-size_1-of-1 slds-m-bottom_medium">
+
+                                        <article class="slds-card slds-card_boundary slds-p-around_medium">
+                                            <div class="slds-m-bottom_small">
+                                                <h3 class="slds-text-heading_small">{query.name}</h3>
+                                                <p class="slds-text-body_small slds-text-color_weak">
+                                                    Object: {query.objectName}
+                                                </p>
+                                            </div>
+
+                                            <div>
+                                                <lightning-button
+                                                    label="View"
+                                                    variant="brand-outline"
+                                                    data-id={query.id}
+                                                    onclick={handleSelectQuery}
+                                                    class="slds-m-right_small">
+                                                </lightning-button>
+
+                                                <lightning-button
+                                                    label="Delete"
+                                                    variant="destructive"
+                                                    data-id={query.id}
+                                                    onclick={handleDelete}>
+                                                </lightning-button>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </template>
+                            </div>
+                        </template>
+
+                        <template if:false={hasQueries}>
+                            <p class="slds-text-color_weak">
+                                No queries matched your search.
+                            </p>
+                        </template>
+
+                    </div>
+                </lightning-card>
+            </div>
+
+            <!-- Query Viewer -->
+            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+                <lightning-card title="Query Viewer" icon-name="standard:search">
+                    <div class="slds-p-around_medium">
+
+                        <template if:true={selectedQuery}>
+                            <div class="slds-m-bottom_medium">
+                                <p class="slds-text-title_bold">Query Name</p>
+                                <p>{selectedQuery.name}</p>
+                            </div>
+
+                            <div class="slds-m-bottom_medium">
+                                <p class="slds-text-title_bold">Object Name</p>
+                                <p>{selectedQuery.objectName}</p>
+                            </div>
+
+                            <div class="slds-m-bottom_medium">
+                                <p class="slds-text-title_bold">Description</p>
+                                <p>{selectedQuery.description}</p>
+                            </div>
+
+                            <div class="slds-m-bottom_medium">
+                                <p class="slds-text-title_bold">SOQL Query</p>
+                                <div class="slds-box slds-theme_default slds-scrollable_x">
+                                    <pre>{selectedQuery.soql}</pre>
+                                </div>
+                            </div>
+
+                            <div class="slds-m-top_large">
+                                <lightning-button
+                                    label="Copy SOQL"
+                                    variant="brand"
+                                    onclick={handleCopySoql}
+                                    class="slds-m-right_small">
+                                </lightning-button>
+
+                                <lightning-button
+                                    label="Delete This Query"
+                                    variant="destructive"
+                                    data-id={selectedQuery.id}
+                                    onclick={handleDelete}>
+                                </lightning-button>
+                            </div>
+                        </template>
+
+                        <template if:false={selectedQuery}>
+                            <p class="slds-text-color_weak">
+                                Select a query from the list to view its details.
+                            </p>
+                        </template>
+
+                    </div>
+                </lightning-card>
+            </div>
+        </div>
     </div>
 </template>
