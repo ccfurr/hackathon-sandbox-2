@@ -14,7 +14,7 @@ The architecture of the QueryVault application is made in a metadata-driven desi
 Security within the application follows the Principle of Least Privilege and is enforced at multiple layers of the Salesforce stack. All Apex controllers are defined using the with sharing keyword to strictly respect the Org-Wide Defaults (OWD), which are set to Private to ensure data isolation. Access is then selectively granted through granular Permission Sets—QueryVault\_Editor for full administrative control and QueryVault\_Viewer for read-only interactions—rather than modifying broad user profiles. On the front end, the Lightning Web Components (LWC) utilize Lightning Data Service (LDS) to provide a reactive, secure, and seamless user experience. By combining these technical strategies, QueryVault provides a professional-grade tool that will allow developers to work quicker and more effectively.
 
 ## How to deploy:
-QueryVault is hosted on the Salesforce Apex Cloud Servers and can be deployed with the Salesforce App Launcher.
+The files for QueryVault are hosted on the Salesforce Apex Cloud Servers and can be deployed with the Salesforce App Launcher.
 
 ## How to use:
 Click on "Create or Edit Queries" and fill out the relevant fields to save new queries or edit existing ones. Saved queries are also visible in a list, and their information can be viewed in the Query Viewer.
