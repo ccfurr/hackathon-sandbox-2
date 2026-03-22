@@ -3,6 +3,12 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentName>editUp</componentName>
+                <identifier>c_editUp</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
                 <componentName>usefulQueries</componentName>
                 <identifier>c_usefulQueries</identifier>
             </componentInstance>

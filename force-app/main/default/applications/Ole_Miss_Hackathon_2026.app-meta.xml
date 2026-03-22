@@ -14,11 +14,15 @@
     <label>Ole Miss Hackathon 2026</label>
     <navType>Console</navType>
     <tabs>Useful_Queries</tabs>
+    <tabs>Useful_Query__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Ole_Miss_Hackathon_2026_UtilityBar</utilityBar>
     <workspaceConfig>
         <mappings>
             <tab>Useful_Queries</tab>
+        </mappings>
+        <mappings>
+            <tab>Useful_Query__c</tab>
         </mappings>
     </workspaceConfig>
 </CustomApplication>
